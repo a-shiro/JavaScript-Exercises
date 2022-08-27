@@ -28,3 +28,10 @@ calculateTotalCost([
     '4',
     '25'
 ]);
+
+calculateTotalCost([
+    "4",
+    "2",
+    "5",
+    "13"
+]);
