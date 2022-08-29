@@ -15,19 +15,19 @@ function calcAreaOfShape(input) {
         area = length * width;
 
     } else if (shape === 'circle') {
-        let radius = Number(input[1])
+        let radius = Number(input[1]);
 
-        area = Math.PI * Math.pow(radius, 2)
+        area = Math.PI * Math.pow(radius, 2);
 
     } else if (shape === 'triangle') {
-        let height = Number(input[1])
-        let width = Number(input[2])
+        let height = Number(input[1]);
+        let width = Number(input[2]);
 
-        area = (height * width) / 2
+        area = (height * width) / 2;
     }
 
 
-    console.log(area.toFixed(3))
+    console.log(area.toFixed(3));
 }
 
 calcAreaOfShape([
