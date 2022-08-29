@@ -4,9 +4,9 @@ function passwordGuess(input) {
     let givenPassword = input[0];
 
     if (givenPassword === password) {
-        console.log('Welcome')
+        console.log('Welcome');
     } else {
-        console.log('Wrong password!')
+        console.log('Wrong password!');
     }
 }
 

@@ -3,15 +3,15 @@ function speedCheck(input) {
     let speed = Number(input[0]);
 
     if (speed <= 10) {
-        result = 'slow'
+        result = 'slow';
     } else if (10 < speed && speed <= 50) {
-        result = 'average'
+        result = 'average';
     } else if (50 < speed && speed <= 150) {
-        result = 'fast'
+        result = 'fast';
     } else if (150 < speed && speed <= 1000) {
-        result = 'ultra fast'
+        result = 'ultra fast';
     } else {
-        result = 'extremely fast'
+        result = 'extremely fast';
     }
 
     console.log(result);
