@@ -16,7 +16,7 @@ function checkOpenTabs(input) {
                 salary -= 50;
                 break;
         }
-        
+
         if (salary <= 0) {
             break;
         }
