@@ -1,7 +1,5 @@
-function solve(str1, str2, str3) {
-    let result = str1 + str2 + str3;
-    console.log(result);
+function solve(townName, population, area) {
+    console.log(`Town ${townName} has population of ${population} and area ${area} square km.`);
 }
 
-solve('a', 'b', 'c');
-solve('%', '2', '0');
+solve('Sofia', 1286383, 492);
