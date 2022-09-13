@@ -9,7 +9,7 @@ function solve(n) {
         'Sunday'
     ];
 
-    let result = 0 >= n || n > 7 ? 'Invalid day!': days[n - 1];
+    let result = 0 < n && n <= 7 ? days[n - 1] : 'Invalid day!';
 
     console.log(result);
 }
