@@ -1,4 +1,4 @@
-function solve(numbers) {
+function sortNumbers(numbers) {
     function sortFromMinToMax (x, y) {
         return x - y;
     }
@@ -7,4 +7,4 @@ function solve(numbers) {
     console.log(...numbers.slice(0, 2));
 }
 
-solve([30, 15, 50, 5]);
+sortNumbers([30, 15, 50, 5]);
