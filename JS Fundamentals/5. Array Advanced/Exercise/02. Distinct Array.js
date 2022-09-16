@@ -7,6 +7,12 @@ function solve(array) {
         }
     })
 
+    // array.filter(n => {
+    //     if (!uniqueNumbers.includes(n)) {
+    //         uniqueNumbers.push(n)
+    //     }
+    // })
+
     console.log(...uniqueNumbers);
 }
 
