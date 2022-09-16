@@ -32,11 +32,11 @@ solve([
     'George is going!',
     'John is not going!',
     'George is not going!'
-])
+]);
 solve([
     'Tom is going!',
     'Annie is going!',
     'Tom is going!',
     'Garry is going!',
     'Jerry is going!'
-])
+]);
