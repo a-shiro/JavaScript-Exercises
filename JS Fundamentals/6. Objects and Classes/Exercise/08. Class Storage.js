@@ -10,6 +10,7 @@ class Storage {
         if (this.capacity - object.quantity >=0 ) {
             this.capacity -= object.quantity;
             this.totalCost += object.quantity * object.price
+
             this.storage.push(object);
         }
     };
