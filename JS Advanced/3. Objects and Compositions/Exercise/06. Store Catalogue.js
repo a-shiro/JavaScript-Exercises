@@ -1,5 +1,5 @@
 function solve(array) {
-    let catalogue = [];
+    let catalogue = {};
 
     for (let pair of array) {
         let [product, price] = pair.split(' : ')
