@@ -27,10 +27,8 @@ function solve() {
             let averageSalary = getAverageSalary(workers);
 
             if (averageSalary > bestRestaurant.averageSalary) {
-                let bestSalary = getBestSalary(workers);
-
                 bestRestaurant.name = name;
-                bestRestaurant.bestSalary = bestSalary;
+                bestRestaurant.bestSalary = getBestSalary(workers);
                 bestRestaurant.averageSalary = averageSalary;
                 bestRestaurant.workers = workers;
             }
