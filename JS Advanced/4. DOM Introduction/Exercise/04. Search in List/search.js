@@ -13,7 +13,7 @@ function search() {
            town.style.textDecoration = 'none';
        }
    }
-   
+
    document.getElementById('result').textContent = `${matchesFound} matches found`;
 }
 
