@@ -1,5 +1,5 @@
 function focused() {
-    let nodes = Array.from(document.querySelectorAll('body div div input'));
+    let nodes = Array.from(document.getElementsByTagName('input'));
 
     for (let node of nodes) {
         node.addEventListener('focus', function () {
