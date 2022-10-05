@@ -24,3 +24,4 @@ solve(20);
 solve(-1);
 solve(100);
 solve(1);
+

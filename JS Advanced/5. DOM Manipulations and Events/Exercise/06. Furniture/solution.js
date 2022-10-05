@@ -11,7 +11,7 @@ function solve() {
         for (let item of items) {
             let tr = document.createElement('tr')
 
-            tr.innerHTML = `<td><img src="${item.img}"/></td>
+            tr.innerHTML = `<td><img src="${item.img}" alt=""/></td>
                             <td><p>${item.name}</p></td>
                             <td><p>${item.price}</p></td>
                             <td><p>${item.decFactor}</p></td>
