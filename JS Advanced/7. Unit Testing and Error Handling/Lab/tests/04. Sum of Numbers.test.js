@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const {sum} = require("./04. Sum of Numbers");
+const {sum} = require("../04. Sum of Numbers");
 
 describe('sum', () => {
     it('function returns correct result with array of numbers', () => {
