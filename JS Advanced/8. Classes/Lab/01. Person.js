@@ -1,23 +1,15 @@
-function getPeople() {
-    class Person {
-        constructor(firstName, lastName, age, email) {
-            this.firstName = firstName
-            this.lastName = lastName;
-            this.age = age;
-            this.email = email;
-        }
-
-        toString = () => {
-            return `${this.firstName} ${this.lastName} (age: ${this.age}, email: ${this.email})`;
-        }
+class Person {
+    constructor(firstName, lastName, age, email) {
+        this.firstName = firstName
+        this.lastName = lastName;
+        this.age = age;
+        this.email = email;
     }
 
-    return [
-        new Person('Anna', 'Simpson', 22, 'anna@yahoo.com'),
-        new Person('SoftUni'),
-        new Person('Stephan', 'Johnson', 25),
-        new Person('Gabriel', 'Peterson', 24, 'g.p@gmail.com'),
-    ];
+    toString = () => {
+        return `${this.firstName} ${this.lastName} (age: ${this.age}, email: ${this.email})`;
+    }
 }
 
-console.log(getPeople())
+let person = new Person('John', 'Johnson', '23', 'johnjohnson@gmail.com');
+console.log(person.toString());
