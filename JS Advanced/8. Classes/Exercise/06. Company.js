@@ -14,14 +14,14 @@ class Company {
 
     addEmployee(name, salary, position, department) {
         if (!name || !salary || salary < 0 || !position || !department) {
-            throw new Error('Invalid input!')
+            throw new Error('Invalid input!');
         }
 
         if (!this.departments[department])
             this.departments[department] = [];
-        this.departments[department].push(new Employee(name, salary, position))
+        this.departments[department].push(new Employee(name, salary, position));
 
-        return `New employee is hired. Name: ${name}. Position: ${position}`
+        return `New employee is hired. Name: ${name}. Position: ${position}`;
     }
 
     bestDepartment() {
@@ -29,7 +29,7 @@ class Company {
         let bestAverageSalary = 0;
 
         for (let key of Object.keys(this.departments)) {
-            let averageSalary = this.averageSalaryOfDepartment(this.departments[key])
+            let averageSalary = this.averageSalaryOfDepartment(this.departments[key]);
 
             if (averageSalary > bestAverageSalary) {
                 bestAverageSalary = averageSalary;
@@ -42,15 +42,15 @@ class Company {
 
         let employees = this.departments[bestDepartment].sort((a, b) => a.name.localeCompare(b.name)).sort((a, b) => b.salary - a.salary);
 
-        employees.forEach(employee => result += `${employee.name} ${employee.salary} ${employee.position}\n`)
+        employees.forEach(employee => result += `${employee.name} ${employee.salary} ${employee.position}\n`);
 
         return result.trim();
     }
 
     averageSalaryOfDepartment(employees) {
-        let total = employees.reduce((total, employee) => total + employee.salary, 0)
+        let total = employees.reduce((total, employee) => total + employee.salary, 0);
 
-        return total / employees.length
+        return total / employees.length;
     }
 }
 
