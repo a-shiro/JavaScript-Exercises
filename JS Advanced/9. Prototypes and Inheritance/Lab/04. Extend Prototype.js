@@ -1,3 +1,5 @@
+// This is legacy (replaced by Classes)
+
 function extendPrototype(classToExtend) {
     classToExtend.prototype.species = 'Human';
     classToExtend.prototype.toSpeciesString = function () {
