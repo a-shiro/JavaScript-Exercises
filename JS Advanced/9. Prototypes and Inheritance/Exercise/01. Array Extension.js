@@ -1,0 +1,6 @@
+class ArrayExtended {
+    last (array) {
+
+    }
+
+}
