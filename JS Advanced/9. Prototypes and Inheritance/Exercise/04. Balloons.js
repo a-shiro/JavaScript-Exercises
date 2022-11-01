@@ -1,4 +1,4 @@
-function solve() {
+function getBalloonsClasses() {
     class Balloon {
         constructor(color, hasWeight) {
             this.color = color;
@@ -9,20 +9,23 @@ function solve() {
     class PartyBalloon extends Balloon {
         constructor(color, hasWeight, ribbonColor, ribbonLength) {
             super(color, hasWeight);
-            this._ribbon = {color: ribbonColor, length: ribbonLength}
+            this._ribbon = {color: ribbonColor, length: ribbonLength};
         }
 
         get ribbon() {
-            return this._ribbon
+            return this._ribbon;
         }
     }
 
     class BirthdayBalloon extends PartyBalloon {
         constructor(color, hasWeight, ribbonColor, ribbonLength, text) {
             super(color, hasWeight, ribbonColor, ribbonLength);
-            this.text = text;
+            this._text = text;
         }
 
+        get text(){
+            return this._text;
+        }
     }
 
     return {
@@ -32,7 +35,7 @@ function solve() {
     };
 }
 
-let balloonClasses = solve();
+let balloonClasses = getBalloonsClasses();
 
 let testBalloon = new balloonClasses.Balloon("yellow", 20.5);
 
