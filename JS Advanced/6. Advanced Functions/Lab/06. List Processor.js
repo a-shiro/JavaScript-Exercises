@@ -18,5 +18,20 @@ function listProcessor (list) {
     })
 }
 
+// function listProcessor(input) {
+//     let resultList = [];
+//
+//     let commands = {
+//         add: (str) => resultList.push(str),
+//         remove: (str) => resultList = resultList.filter((e) => e !== str),
+//         print: () => console.log(resultList.join(',')),
+//     };
+//
+//     for (const line of input) {
+//         let [command, value] = line.split(' ');
+//         commands[command](value);
+//     }
+// }
+
 listProcessor(['add hello', 'add again', 'remove hello', 'add again', 'print']);
 listProcessor(['add pesho', 'add george', 'add peter', 'remove peter','print'])
