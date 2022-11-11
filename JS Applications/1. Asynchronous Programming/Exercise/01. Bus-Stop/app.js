@@ -4,17 +4,17 @@ async function getInfo() {
     const stopId = document.getElementById('stopId');
 
     try {
-    const stopInfo = await getStopInfo(stopId.value);
+        const stopInfo = await getStopInfo(stopId.value);
 
-    stopName.innerText = stopInfo.name;
-    busesList.innerHTML = ''
+        stopName.innerText = stopInfo.name;
+        busesList.innerHTML = ''
 
-    Object.entries(stopInfo.buses).forEach(([key, value]) => {
-        const li = document.createElement('li');
-        li.innerText = `Bus ${key} arrives in ${value} minutes`;
+        Object.entries(stopInfo.buses).forEach(([key, value]) => {
+            const li = document.createElement('li');
+            li.innerText = `Bus ${key} arrives in ${value} minutes`;
 
-        busesList.append(li);
-    })
+            busesList.append(li);
+        })
 
     } catch (error) {
         stopName.innerText = 'Error';
