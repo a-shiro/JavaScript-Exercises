@@ -31,12 +31,14 @@ async function getPosts(id = '') {
 async function viewPost() {
     const postId = document.querySelector('select').value;
 
-    const comments = await getComments();
+    if (postId) {
+        const comments = await getComments();
 
-    const post = await getPosts(postId)
-    const postComments = Object.values(comments).filter(comment => comment.postId === postId);
+        const post = await getPosts(postId)
+        const postComments = Object.values(comments).filter(comment => comment.postId === postId);
 
-    display(post, postComments);
+        display(post, postComments);
+    }
 }
 
 async function loadPosts() {
