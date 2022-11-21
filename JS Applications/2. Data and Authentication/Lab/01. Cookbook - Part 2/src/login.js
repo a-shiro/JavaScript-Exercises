@@ -1,4 +1,4 @@
-document.querySelector('#login-form').addEventListener('submit', onLogin)
+document.querySelector('#login-form').addEventListener('submit', onLogin);
 
 async function onLogin(event) {
     event.preventDefault();
