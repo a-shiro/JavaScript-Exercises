@@ -1,4 +1,4 @@
-function fillDetails(list, element,  collection) {
+function fillDetails(list, element, collection) {
     collection.forEach(item => {
         const requestedElement = document.createElement(element);
         requestedElement.innerText = item;
@@ -79,6 +79,11 @@ function isUserLogged() {
     return document.querySelector('#user').style.display = 'inline-block';
 }
 
+function logOut() {
+    sessionStorage.clear()
+    window.location = 'index.html'
+}
+
 async function startApp() {
     const recipes = await getRecipes();
     const cards = recipes.map(createCard);
@@ -86,5 +91,7 @@ async function startApp() {
     isUserLogged();
     displayCards(cards);
 }
+
+document.querySelector('#logoutBtn').addEventListener('click', logOut);
 
 startApp();
