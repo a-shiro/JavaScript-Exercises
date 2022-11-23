@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>My Cookbook</title>
 
+  <link rel="stylesheet" href="static/form.css">
   <link rel="stylesheet" href="static/site.css">
   <link rel="stylesheet" href="static/recipe.css">
 
@@ -12,39 +13,34 @@
 </head>
 
 <body>
-<section id="home-view">
-  <header>
-    <h1>My Cookbook</h1>
-    <nav>
-      <a class="active">Catalog</a>
-      <div id="user">
-        <a href="create.html">Create Recipe</a>
-        <a id="logoutBtn" href="javascript:void(0)">Logout</a>
-      </div>
-      <div id="guest">
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-      </div>
-    </nav>
-  </header>
+<header>
+  <h1>My Cookbook</h1>
+  <nav>
+    <a id="homeBtn" class="active">Catalog</a>
+
+    <div id="user">
+      <a id="createRecipeBtn" href="javascript:void(0)">Create Recipe</a>
+      <a id="logoutBtn" href="javascript:void(0)">Logout</a>
+    </div>
+
+    <div id="guest">
+      <a id="loginBtn" href="javascript:void(0)">Login</a>
+      <a id="registerBtn" href="javascript:void(0)">Register</a>
+    </div>
+  </nav>
+</header>
+
+<section id="homeView">
   <main>
     <p style="color: white">Loading...</p>
   </main>
 </section>
 
-<section id="login-view" style="display: none">
-  <header>
-    <h1>My Cookbook</h1>
-    <nav>
-      <a href="index.html">Catalog</a>
-      <a class="active">Login</a>
-      <a href="register.html">Register</a>
-    </nav>
-  </header>
+<section id="loginView" style="display: none">
   <main>
     <article>
       <h2>Login</h2>
-      <form>
+      <form id="loginForm">
         <label>E-mail: <input type="text" name="email"></label>
         <label>Password: <input type="password" name="password"></label>
         <input type="submit" value="Login">
@@ -53,19 +49,11 @@
   </main>
 </section>
 
-<section id="register-view">
-  <header>
-    <h1>My Cookbook</h1>
-    <nav>
-      <a href="index.html">Catalog</a>
-      <a href="login.html">Login</a>
-      <a class="active">Register</a>
-    </nav>
-  </header>
+<section id="registerView" style="display: none">
   <main>
     <article>
       <h2>Register</h2>
-      <form>
+      <form id="registerForm">
         <label>E-mail: <input type="text" name="email"></label>
         <label>Password: <input type="password" name="password"></label>
         <label>Repeat: <input type="password" name="rePass"></label>
@@ -75,14 +63,7 @@
   </main>
 </section>
 
-<section id="create-view">
-  <header>
-    <h1>My Cookbook</h1>
-    <nav>
-      <a href="index.html">Catalog</a>
-      <a class="active">Create Recipe</a>
-    </nav>
-  </header>
+<section id="createView" style="display: none">
   <main>
     <article>
       <h2>New Recipe</h2>

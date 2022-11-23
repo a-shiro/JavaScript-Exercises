@@ -1,8 +1,6 @@
 // Login
 
-document.querySelector('#login-form').addEventListener('submit', onLogin);
-
-async function onLogin(event) {
+export async function onLogin(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
@@ -33,18 +31,14 @@ async function onLogin(event) {
 
 // Logout
 
-document.querySelector('#logoutBtn').addEventListener('click', logOut);
-
-function logOut() {
+export function logout() {
     sessionStorage.clear()
     window.location = 'index.html'
 }
 
 // Register
 
-document.querySelector('#register-form').addEventListener('submit', onRegister);
-
-async function onRegister(event) {
+export async function onRegister(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
