@@ -1,40 +1,32 @@
-const form = document.querySelector('form');
+document.querySelector('#create-recipe-form').addEventListener('submit', createRecipe);
 
-form.addEventListener('submit', (ev => {
-    ev.preventDefault();
-    const formData = new FormData(ev.target);
-    onSubmit([...formData.entries()].reduce((p, [k, v]) => Object.assign(p, { [k]: v }), {}));
-}));
+async function createRecipe(event) {
+    event.preventDefault();
 
-async function onSubmit(data) {
-    const body = JSON.stringify({
-        name: data.name,
-        img: data.img,
-        ingredients: data.ingredients.split('\n').map(l => l.trim()).filter(l => l != ''),
-        steps: data.steps.split('\n').map(l => l.trim()).filter(l => l != '')
-    });
+    const token = sessionStorage.getItem('accessToken');
 
-    const token = sessionStorage.getItem('authToken');
-    if (token == null) {
-        return window.location.pathname = 'index.html';
-    }
+    if (token !== null) {
+        const formData = new FormData(event.target);
 
-    try {
-        const response = await fetch('http://localhost:3030/data/recipes', {
+        let {name, img, ingredients, steps} = Object.fromEntries(formData.entries());
+
+        ingredients = ingredients.split('\n');
+        steps = steps.split('\n');
+
+        await fetch('http://localhost:3030/data/recipes', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json',
-                'X-Authorization': token
+                'X-Authorization': token,
             },
-            body
-        });
-        
-        if (response.status == 200) {
-            window.location.pathname = 'index.html';
-        } else {
-            throw new Error(await response.json());
-        }
-    } catch (err) {
-        console.error(err.message);
+            body: JSON.stringify({
+                name,
+                img,
+                ingredients,
+                steps,
+            })
+        })
     }
+
+    window.location = 'index.html'
 }
