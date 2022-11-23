@@ -1,5 +1,6 @@
 import {onLogin, logout, onRegister, isUserLogged} from "./auth.js";
 import {displayCards} from "./catalog.js";
+import {createRecipe} from "./create.js";
 
 function hideViews() {
     const sections = document.querySelectorAll('section')
@@ -40,14 +41,25 @@ function showRegisterView(event) {
     document.querySelector('#registerView').style.display = 'block';
 }
 
+function showCreateRecipeView(event) {
+    event.preventDefault();
+
+    hideViews();
+    toggleActiveBtn(event.target);
+
+    document.querySelector('#createRecipeView').style.display = 'block';
+}
+
 async function startApp() {
     document.querySelector('#homeBtn').addEventListener('click', showHomeView);
     document.querySelector('#loginBtn').addEventListener('click', showLoginView);
     document.querySelector('#registerBtn').addEventListener('click', showRegisterView);
+    document.querySelector('#createRecipeBtn').addEventListener('click', showCreateRecipeView)
 
     document.querySelector('#loginForm').addEventListener('submit', onLogin);
     document.querySelector('#registerForm').addEventListener('submit', onRegister);
     document.querySelector('#logoutBtn').addEventListener('click', logout);
+    document.querySelector('#createRecipeForm').addEventListener('submit', createRecipe);
 
     isUserLogged();
     await displayCards();

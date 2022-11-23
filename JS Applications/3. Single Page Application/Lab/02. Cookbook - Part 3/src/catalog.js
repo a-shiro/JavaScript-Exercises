@@ -1,12 +1,3 @@
-function fillDetails(list, element, collection) {
-    collection.forEach(item => {
-        const requestedElement = document.createElement(element);
-        requestedElement.innerText = item;
-
-        list.append(requestedElement);
-    });
-}
-
 function createCard(recipe) {
     const card = document.createElement('article');
 
@@ -51,13 +42,13 @@ function createCard(recipe) {
     }
 }
 
-export async function displayCards() {
-    const main = document.querySelector('main');
+function fillDetails(list, element, collection) {
+    collection.forEach(item => {
+        const requestedElement = document.createElement(element);
+        requestedElement.innerText = item;
 
-    const recipes = await getRecipes();
-    const cards = recipes.map(createCard);
-
-    main.replaceChildren(...cards);
+        list.append(requestedElement);
+    });
 }
 
 async function getRecipes() {
@@ -74,10 +65,11 @@ async function getRecipeById(id) {
     return data;
 }
 
-function isUserLogged() {
-    if (sessionStorage.length === 0) {
-        return document.querySelector('#guest').style.display = 'inline-block';
-    }
+export async function displayCards() {
+    const main = document.querySelector('main');
 
-    return document.querySelector('#user').style.display = 'inline-block';
+    const recipes = await getRecipes();
+    const cards = recipes.map(createCard);
+
+    main.replaceChildren(...cards);
 }

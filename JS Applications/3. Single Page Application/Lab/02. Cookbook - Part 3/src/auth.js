@@ -14,7 +14,7 @@ export async function onLogin(event) {
     await sendRequest('http://localhost:3030/users/login', {email, password});
 }
 
-function getFormFields(event) {
+export function getFormFields(event) {
     const formData = new FormData(event.target);
 
     return Object.fromEntries(formData.entries());
