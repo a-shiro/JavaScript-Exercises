@@ -70,6 +70,11 @@ export async function onRegister(event) {
     } catch (err) {
         console.log(err.message);
     }
+}
 
-
+export function isUserLogged() {
+    if (sessionStorage.length === 0) {
+        return document.querySelector('#guest').style.display = 'inline-block';
+    }
+    return document.querySelector('#user').style.display = 'inline-block';
 }

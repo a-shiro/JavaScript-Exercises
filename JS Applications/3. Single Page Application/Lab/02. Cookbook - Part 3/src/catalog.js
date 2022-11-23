@@ -51,8 +51,11 @@ function createCard(recipe) {
     }
 }
 
-function displayCards(cards) {
+export async function displayCards() {
     const main = document.querySelector('main');
+
+    const recipes = await getRecipes();
+    const cards = recipes.map(createCard);
 
     main.replaceChildren(...cards);
 }
