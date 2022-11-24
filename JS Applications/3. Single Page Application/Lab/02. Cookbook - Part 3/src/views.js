@@ -45,3 +45,11 @@ export function showCreateRecipeView(event) {
 
     document.querySelector('#createRecipeView').style.display = 'block';
 }
+
+export function showRecipeDetailsView(event) {
+    event.preventDefault();
+
+    hideViews();
+
+    document.querySelector('#recipeDetailsView').style.display = 'block';
+}

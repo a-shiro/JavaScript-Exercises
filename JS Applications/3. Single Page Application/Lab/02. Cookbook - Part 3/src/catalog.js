@@ -1,8 +1,9 @@
+import {showRecipeDetailsView} from "./views.js";
+
 function createCard(recipe) {
     const card = document.createElement('article');
 
     card.classList.add('preview');
-    card.style.display = 'block';
 
     card.innerHTML = `<div class="title">
                           <h2>${recipe.name}</h2>
@@ -15,10 +16,10 @@ function createCard(recipe) {
 
     return card;
 
-    async function toggleCard() {
-        const recipeDetails = await getRecipeById(recipe._id);
+    async function toggleCard(event) {
+        const card = document.querySelector('#recipeDetailsView article');
 
-        card.classList.remove('preview');
+        const recipeDetails = await getRecipeById(recipe._id);
 
         card.innerHTML = `<h2>${recipeDetails.name}</h2>
                           <div class="band">
@@ -32,6 +33,10 @@ function createCard(recipe) {
                           </div>
                           <div class="description">
                               <h3>Preparation:</h3>
+                          </div>
+                          <div>
+                              <button class="controls">\u270E Edit</button>
+                              <button class="controls">\u2716 Delete</button>  
                           </div>`;
 
         const ingredientsList = card.querySelector('ul');
@@ -39,6 +44,8 @@ function createCard(recipe) {
 
         fillDetails(ingredientsList, 'li', recipeDetails.ingredients);
         fillDetails(preparationSteps, 'p', recipeDetails.steps);
+
+        showRecipeDetailsView(event)
     }
 }
 
