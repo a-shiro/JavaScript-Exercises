@@ -1,54 +1,8 @@
+import {showHomeView, showLoginView, showRegisterView, showCreateRecipeView} from "./views.js";
 import {onLogin, logout, onRegister, isUserLogged} from "./auth.js";
 import {displayCards} from "./catalog.js";
 import {createRecipe} from "./create.js";
 
-function hideViews() {
-    const sections = document.querySelectorAll('section')
-
-    sections.forEach(section => section.style.display = 'none');
-}
-
-function toggleActiveBtn(currentAnchor) {
-    document.querySelector('nav .active').classList.remove('active');
-
-    currentAnchor.classList.add('active');
-}
-
-function showHomeView(event) {
-    event.preventDefault();
-
-    hideViews();
-    toggleActiveBtn(event.target);
-
-    document.querySelector('#homeView').style.display = 'block';
-}
-
-function showLoginView(event) {
-    event.preventDefault();
-
-    hideViews();
-    toggleActiveBtn(event.target);
-
-    document.querySelector('#loginView').style.display = 'block';
-}
-
-function showRegisterView(event) {
-    event.preventDefault();
-
-    hideViews();
-    toggleActiveBtn(event.target);
-
-    document.querySelector('#registerView').style.display = 'block';
-}
-
-function showCreateRecipeView(event) {
-    event.preventDefault();
-
-    hideViews();
-    toggleActiveBtn(event.target);
-
-    document.querySelector('#createRecipeView').style.display = 'block';
-}
 
 async function startApp() {
     document.querySelector('#homeBtn').addEventListener('click', showHomeView);

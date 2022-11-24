@@ -14,6 +14,18 @@ export async function onLogin(event) {
     await sendRequest('http://localhost:3030/users/login', {email, password});
 }
 
+export function logout() {
+    sessionStorage.clear();
+    window.location = 'index.html';
+}
+
+export function isUserLogged() {
+    if (sessionStorage.length === 0) {
+        return document.querySelector('#guest').style.display = 'inline-block';
+    }
+    return document.querySelector('#user').style.display = 'inline-block';
+}
+
 export function getFormFields(event) {
     const formData = new FormData(event.target);
 
@@ -41,16 +53,4 @@ async function sendRequest(url, body) {
     } catch (err) {
         console.error(err.message);
     }
-}
-
-export function logout() {
-    sessionStorage.clear();
-    window.location = 'index.html';
-}
-
-export function isUserLogged() {
-    if (sessionStorage.length === 0) {
-        return document.querySelector('#guest').style.display = 'inline-block';
-    }
-    return document.querySelector('#user').style.display = 'inline-block';
 }
