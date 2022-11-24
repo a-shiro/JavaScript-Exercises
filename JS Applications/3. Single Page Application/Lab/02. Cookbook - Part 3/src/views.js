@@ -4,17 +4,17 @@ export function hideViews() {
     sections.forEach(section => section.style.display = 'none');
 }
 
-export function toggleActiveBtn(currentAnchor) {
+export function toggleActiveBtn(anchor) {
     document.querySelector('nav .active').classList.remove('active');
 
-    currentAnchor.classList.add('active');
+    anchor.classList.add('active');
 }
 
 export function showHomeView(event) {
     event.preventDefault();
 
     hideViews();
-    toggleActiveBtn(event.target);
+    toggleActiveBtn(document.querySelector('#homeBtn'));
 
     document.querySelector('#homeView').style.display = 'block';
 }
@@ -23,7 +23,7 @@ export function showLoginView(event) {
     event.preventDefault();
 
     hideViews();
-    toggleActiveBtn(event.target);
+    toggleActiveBtn(document.querySelector('#loginBtn'));
 
     document.querySelector('#loginView').style.display = 'block';
 }
@@ -32,7 +32,7 @@ export function showRegisterView(event) {
     event.preventDefault();
 
     hideViews();
-    toggleActiveBtn(event.target);
+    toggleActiveBtn(document.querySelector('#registerBtn'));
 
     document.querySelector('#registerView').style.display = 'block';
 }
@@ -41,7 +41,7 @@ export function showCreateRecipeView(event) {
     event.preventDefault();
 
     hideViews();
-    toggleActiveBtn(event.target);
+    toggleActiveBtn(document.querySelector('#createRecipeBtn'));
 
     document.querySelector('#createRecipeView').style.display = 'block';
 }

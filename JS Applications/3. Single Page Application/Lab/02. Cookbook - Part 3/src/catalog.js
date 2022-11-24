@@ -1,4 +1,4 @@
-import {showHomeView, showRecipeDetailsView} from "./views.js";
+import {showCreateRecipeView, showHomeView, showRecipeDetailsView} from "./views.js";
 
 function createCard(recipe) {
     const card = document.createElement('article');
@@ -103,7 +103,7 @@ async function deleteRecipe(event) {
 }
 
 async function editRecipe(event) {
-
+    showCreateRecipeView(event)
 }
 
 export async function displayCards() {
