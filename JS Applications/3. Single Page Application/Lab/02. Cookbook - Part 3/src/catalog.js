@@ -1,4 +1,4 @@
-import {showRecipeDetailsView} from "./views.js";
+import {showHomeView, showRecipeDetailsView} from "./views.js";
 
 function createCard(recipe) {
     const card = document.createElement('article');
@@ -12,16 +12,17 @@ function createCard(recipe) {
                           <img src="${recipe.img}" alt="">
                       </div>`;
 
-    card.addEventListener('click', toggleCard);
+    card.addEventListener('click', showDetails);
 
     return card;
 
-    async function toggleCard(event) {
+    async function showDetails(event) {
         const card = document.querySelector('#recipeDetailsView article');
 
         const recipeDetails = await getRecipeById(recipe._id);
 
-        card.innerHTML = `<h2>${recipeDetails.name}</h2>
+        card.id = recipeDetails._ownerId;
+        card.innerHTML = `<h2 id="${recipe._id}">${recipeDetails.name}</h2>
                           <div class="band">
                               <div class="thumb">
                                   <img src="${recipeDetails.img}" alt="">
@@ -33,10 +34,6 @@ function createCard(recipe) {
                           </div>
                           <div class="description">
                               <h3>Preparation:</h3>
-                          </div>
-                          <div>
-                              <button class="controls">\u270E Edit</button>
-                              <button class="controls">\u2716 Delete</button>  
                           </div>`;
 
         const ingredientsList = card.querySelector('ul');
@@ -44,6 +41,23 @@ function createCard(recipe) {
 
         fillDetails(ingredientsList, 'li', recipeDetails.ingredients);
         fillDetails(preparationSteps, 'p', recipeDetails.steps);
+
+
+        if (sessionStorage.userId === recipeDetails._ownerId) {
+            const div = document.createElement('div');
+
+            const editBtn = document.createElement('button');
+            const deleteBtn = document.createElement('button');
+
+            editBtn.addEventListener('click', editRecipe);
+            deleteBtn.addEventListener('click', deleteRecipe);
+
+            editBtn.textContent = '\u270E Edit';
+            deleteBtn.textContent = '\u2716 Delete';
+
+            div.append(editBtn, deleteBtn);
+            card.append(div);
+        }
 
         showRecipeDetailsView(event)
     }
@@ -70,6 +84,26 @@ async function getRecipeById(id) {
     const data = await response.json();
 
     return data;
+}
+
+async function deleteRecipe(event) {
+    const id = event.path[2].firstChild.id;
+    const token = sessionStorage.getItem('accessToken')
+
+    await fetch('http://localhost:3030/data/recipes/' + id, {
+        method: 'delete',
+        headers: {
+            'Content-Type': 'application/JSON',
+            'X-Authorization': token
+        },
+    })
+
+    await displayCards();
+    window.location = 'index.html'
+}
+
+async function editRecipe(event) {
+
 }
 
 export async function displayCards() {

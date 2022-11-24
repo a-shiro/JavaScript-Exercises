@@ -46,6 +46,7 @@ async function sendRequest(url, body) {
 
         if (response.ok) {
             sessionStorage.setItem('accessToken', data.accessToken);
+            sessionStorage.setItem('userId', data._id);
             window.location = 'index.html';
         } else {
             throw new Error(data.message);
