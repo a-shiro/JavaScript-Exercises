@@ -1,7 +1,7 @@
 import {showHomeView, showLoginView, showRegisterView, showCreateRecipeView} from "./views.js";
 import {onLogin, logout, onRegister, isUserLogged} from "./auth.js";
 import {displayCards} from "./catalog.js";
-import {createRecipe} from "./create.js";
+import {onSubmit} from "./create.js";
 
 
 async function startApp() {
@@ -13,7 +13,7 @@ async function startApp() {
     document.querySelector('#loginForm').addEventListener('submit', onLogin);
     document.querySelector('#registerForm').addEventListener('submit', onRegister);
     document.querySelector('#logoutBtn').addEventListener('click', logout);
-    document.querySelector('#createRecipeForm').addEventListener('submit', createRecipe);
+    document.querySelector('#createRecipeForm').addEventListener('submit', onSubmit);
 
     isUserLogged();
     await displayCards();

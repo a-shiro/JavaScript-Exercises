@@ -1,7 +1,16 @@
 import {getFormFields} from "./auth.js";
 
-export async function createRecipe(event) {
+export async function onSubmit(event) {
     event.preventDefault();
+
+    const submitBtn = document.querySelector('#createRecipeForm [name="submitBtn"]');
+
+
+    let method = submitBtn.value === 'Update Recipe'
+        ? 'put'
+        : 'post'
+
+    let recipeId = '';
 
     const token = sessionStorage.getItem('accessToken');
 
@@ -11,18 +20,22 @@ export async function createRecipe(event) {
         ingredients = ingredients.split('\n');
         steps = steps.split('\n');
 
-        await sendRequest({name, img, ingredients, steps}, token);
+        if (method === 'put') {
+            recipeId = submitBtn.id;
+        }
+
+        await sendRequest({name, img, ingredients, steps}, token, method, recipeId);
     }
 }
 
-async function sendRequest(body, token) {
+async function sendRequest(body, token, method, id) {
     try {
         if (!body.name || !body.img || body.ingredients[0] === '' || body.steps[0] === '') {
             throw new Error('All fields are required!')
         }
 
-        const response = await fetch('http://localhost:3030/data/recipes', {
-            method: 'post',
+        const response = await fetch('http://localhost:3030/data/recipes/' + id, {
+            method: method,
             headers: {
                 'Content-Type': 'application/json',
                 'X-Authorization': token,

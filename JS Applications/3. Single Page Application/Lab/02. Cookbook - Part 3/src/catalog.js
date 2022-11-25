@@ -1,4 +1,4 @@
-import {showCreateRecipeView, showHomeView, showRecipeDetailsView} from "./views.js";
+import {showCreateRecipeView, showRecipeDetailsView} from "./views.js";
 
 function createCard(recipe) {
     const card = document.createElement('article');
@@ -104,6 +104,24 @@ async function deleteRecipe(event) {
 
 async function editRecipe(event) {
     showCreateRecipeView(event)
+
+    const id = event.path[2].firstChild.id;
+
+    document.querySelector('#createRecipeView h2').textContent = 'Edit Recipe';
+    const submitBtn = document.querySelector('#createRecipeForm [name="submitBtn"]');
+
+    submitBtn.value = 'Update Recipe';
+    submitBtn.id = id;
+
+    const recipe = await getRecipeById(id);
+
+    const [nameField, imageField] = document.querySelectorAll('#createRecipeForm input');
+    const [ingredientsField, preparationField] = document.querySelectorAll('#createRecipeForm textarea');
+
+    nameField.value = recipe.name;
+    imageField.value = recipe.img;
+    ingredientsField.value = recipe.ingredients.join('\n');
+    preparationField.value = recipe.steps.join('\n');
 }
 
 export async function displayCards() {
