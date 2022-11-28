@@ -4,7 +4,6 @@ async function showHomeView() {
     await displayTopics();
 
     document.querySelector('#homeView').style.display = 'block';
-    console.log('hello')
 }
 
 function showTopicView() {

@@ -1,4 +1,5 @@
 import {render} from "./views.js";
+import {getTopicById} from "./requests.js";
 
 export function clearFields() {
     document.querySelector('#topicName').value = '';
@@ -39,6 +40,15 @@ export async function displayTopics() {
     })
 }
 
-function loadDetails(event) {
+async function loadDetails(event) {
+    const topicId = event.target.parentElement.id;
+
+    const topic = await getTopicById(topicId);
+
+    document.querySelector('#topicTitle').textContent = topic.topicName;
+    document.querySelector('#profileUsername').textContent = topic.username;
+    document.querySelector('#timePosted').textContent = topic.time;
+    document.querySelector('#postedContent').textContent = topic.postText;
+
     render('details');
 }

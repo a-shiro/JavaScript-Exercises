@@ -29,3 +29,10 @@ async function sendRequest(body) {
         body: JSON.stringify(body)
     })
 }
+
+export async function getTopicById(id) {
+    const response = await fetch('http://localhost:3030/jsonstore/collections/myboard/posts/' + id);
+    const data = await response.json();
+
+    return data;
+}
