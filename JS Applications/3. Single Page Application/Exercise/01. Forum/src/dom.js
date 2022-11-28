@@ -1,10 +1,8 @@
 import {render} from "./views.js";
-import {getTopicById} from "./requests.js";
+import {getComments, getTopicById} from "./requests.js";
 
-export function clearFields() {
-    document.querySelector('#topicName').value = '';
-    document.querySelector('#username').value = '';
-    document.querySelector('#postText').value = '';
+export function clearFields(fields) {
+    fields.forEach(field => field.value = '');
 }
 
 export async function displayTopics() {
@@ -49,6 +47,34 @@ async function loadDetails(event) {
     document.querySelector('#profileUsername').textContent = topic.username;
     document.querySelector('#timePosted').textContent = topic.time;
     document.querySelector('#postedContent').textContent = topic.postText;
+    document.querySelector('.comment').id = topicId;
+
+    await loadComments(topicId);
 
     render('details');
+}
+
+async function loadComments(topicId) {
+    let comments = await getComments();
+
+    const filteredComments = comments.filter(comment => comment.postId === topicId);
+
+    filteredComments.forEach(comment => {
+        const div = document.createElement('div');
+        div.id = 'user-comment'
+
+        div.innerHTML =
+            `<div class="topic-name-wrapper">
+                <div class="topic-name">
+                    <p><strong>${comment.username}</strong> commented on
+                        <time>${comment.time}</time>
+                    </p>
+                    <div class="post-content">
+                        <p>${comment.comment}</p>
+                    </div>
+                </div>
+            </div>`
+
+        document.querySelector('.comment').append(div);
+    })
 }

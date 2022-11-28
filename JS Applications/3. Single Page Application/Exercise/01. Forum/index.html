@@ -47,12 +47,12 @@
             <input type="text" name="topicName" id="topicName">
           </div>
           <div class="new-topic-title">
-            <label for="username">Username <span class="red">*</span></label>
-            <input type="text" name="username" id="username">
+            <label for="profileName">Username <span class="red">*</span></label>
+            <input type="text" name="username" id="profileName">
           </div>
           <div class="new-topic-content">
             <label for="postText">Post <span class="red">*</span></label>
-            <textarea type="text" name="postText" id="postText" rows="8" class="height"></textarea>
+            <textarea name="postText" id="postText" rows="8" class="height"></textarea>
           </div>
           <div class="new-topic-buttons">
             <button id="cancelBtn" class="cancel">Cancel</button>
@@ -86,7 +86,6 @@
           <p><span id="profileUsername"></span> posted on
             <time id="timePosted"></time>
           </p>
-
           <p id="postedContent" class="post-content"></p>
         </div>
       </div>
@@ -94,8 +93,8 @@
       <div class="answer-comment">
         <p><span>currentUser</span> comment:</p>
         <div class="answer">
-          <form>
-            <textarea name="postText" id="comment" cols="30" rows="10"></textarea>
+          <form id="createCommentForm">
+            <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
             <div>
               <label for="username">Username <span class="red">*</span></label>
               <input type="text" name="username" id="username">
