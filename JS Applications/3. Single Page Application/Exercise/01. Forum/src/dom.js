@@ -54,7 +54,10 @@ async function loadDetails(event) {
     render('details');
 }
 
-async function loadComments(topicId) {
+export async function loadComments(topicId) {
+    const commentsBox = document.querySelector('#comments');
+    commentsBox.innerHTML = '';
+
     let comments = await getComments();
 
     const filteredComments = comments.filter(comment => comment.postId === topicId);
@@ -75,6 +78,6 @@ async function loadComments(topicId) {
                 </div>
             </div>`
 
-        document.querySelector('.comment').append(div);
+        commentsBox.append(div);
     })
 }

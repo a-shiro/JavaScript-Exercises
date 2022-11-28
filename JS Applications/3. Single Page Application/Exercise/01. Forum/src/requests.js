@@ -30,6 +30,7 @@ export async function createTopic(event) {
         document.querySelector('#profileName'),
         document.querySelector('#postText'),
     ]);
+
     render('home');
 }
 
@@ -39,6 +40,8 @@ export async function getComments() {
 
     return Object.values(data);
 }
+
+import {loadComments} from "./dom.js";
 
 export async function createComment(event) {
     event.preventDefault();
@@ -62,7 +65,8 @@ export async function createComment(event) {
         document.querySelector('#username')
     ])
 
-    // possibly add render details
+    await loadComments(document.querySelector('.comment').id);
+    render('details');
 }
 
 async function sendRequest(url, body) {
