@@ -1,4 +1,4 @@
-import { html, nothing, render } from "../node_modules/lit-html/lit-html.js";
+import { html, nothing, render } from "../../../../node_modules/lit-html/lit-html.js";
 import { contacts as data } from "./contacts.js";
 
 const contacts = data.map(c => Object.assign({}, c, { active: false }));
