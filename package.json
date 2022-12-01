@@ -18,6 +18,10 @@
   },
   "homepage": "https://github.com/a-shiro/JavaScript-Exercises#readme",
   "dependencies": {
-    "lit-html": "^2.4.0"
+    "chai": "^4.3.7",
+    "lit-html": "^2.4.0",
+    "mocha": "^10.1.0",
+    "page": "^1.11.6",
+    "playwright-chromium": "^1.28.1"
   }
 }
