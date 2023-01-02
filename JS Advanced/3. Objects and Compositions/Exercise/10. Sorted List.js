@@ -20,7 +20,6 @@ function createSortedList() {
         if (valid) {
             collection.splice(index, 1);
             this.size--;
-            
             return;
         }
 
