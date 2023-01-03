@@ -46,6 +46,6 @@ function solve() {
     document.querySelectorAll('button')[1].addEventListener('click', () => {
         fields.forEach(field => field.value = '');
         table.style.border = 'none';
-        result.textContent = ''
+        result.textContent = '';
     })
 }
