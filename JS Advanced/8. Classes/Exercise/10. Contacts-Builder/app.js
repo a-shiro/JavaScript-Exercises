@@ -15,7 +15,6 @@ class Contact {
         this._online = value;
 
         if (this.headingDiv) {
-
             this.headingDiv.className = this._online ? 'title online' : 'title';
         }
     }
@@ -62,34 +61,3 @@ let contacts = [
 contacts.forEach(c => c.render('main'));
 
 setTimeout(() => contacts[1].online = true, 2000);
-
-// this.parent = document.querySelector(`#${id}`);
-
-// this.article = document.createElement('article');
-
-// this.headingDiv = document.createElement('div');
-// this.infoButton = document.createElement('button');
-// this.headingDiv.classList.add('title');
-// this.headingDiv.textContent = `${this.firstName} ${this.lastName}`;
-
-// this.infoButton.textContent = '\u2139';
-// this.infoButton.addEventListener('click', () => {
-//     this.infoDiv.style.display = this.infoDiv.style.display === 'none' ? 'block' : 'none'
-// })
-
-// this.infoDiv = document.createElement('div');
-// this.phoneSpan = document.createElement('span');
-// this.emailSpan = document.createElement('span');
-
-// this.infoDiv.classList.add('info');
-// this.infoDiv.style.display = 'none';
-
-// this.phoneSpan.innerHTML = `&phone; ${this.phone}`;
-// this.emailSpan.innerHTML = `&#9993; ${this.email}`;
-
-// this.headingDiv.appendChild(this.infoButton);
-// this.infoDiv.appendChild(this.phoneSpan);
-// this.infoDiv.appendChild(this.emailSpan);
-// this.article.appendChild(this.headingDiv);
-// this.article.appendChild(this.infoDiv);
-// this.parent.appendChild(this.article);
