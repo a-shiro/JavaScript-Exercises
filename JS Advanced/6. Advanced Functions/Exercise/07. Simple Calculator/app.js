@@ -1,20 +1,21 @@
 function calculator() {
-    const [x, y, result] = document.querySelectorAll('input')
-    
-    const calculate = {
-        init: () => {
-            window.calculate = calculate;
+    return {
+        init: (x, y, result) => {
+            this.x = document.querySelector(x);
+            this.y = document.querySelector(y);
+            this.result = document.querySelector(result);
         },
         add: () => {
-            result.value = Number(x.value) + Number(y.value);
+            this.result.value = Number(this.x.value) + Number(this.y.value);
         },
         subtract: () => {
-            result.value = Number(x.value) - Number(y.value);
+            this.result.value = Number(this.x.value) - Number(this.y.value);
         }
-    }
-
-    return calculate.init();
+    };
 }
+
+const calculate = calculator();
+calculate.init('#num1', '#num2', '#result');
 
 
 
