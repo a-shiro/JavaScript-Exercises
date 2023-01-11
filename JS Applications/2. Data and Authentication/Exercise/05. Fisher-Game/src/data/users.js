@@ -3,8 +3,7 @@ import { render } from "../utils.js";
 export async function loginUser(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-    const { email, password } = Object.fromEntries(formData.entries());
+    const { email, password } = getFormData(e);
 
     if (email !== '' && password !== '') {
         try {
@@ -24,7 +23,7 @@ export async function loginUser(e) {
                 sessionStorage.setItem('id', data._id);
                 sessionStorage.setItem('accessToken', data.accessToken);
 
-                render(document.querySelector('#home-view'))
+                render(document.querySelector('#home-view'));
 
             } else {
                 throw new Error(data.message);
@@ -34,4 +33,44 @@ export async function loginUser(e) {
         }
 
     }
+}
+
+export async function registerUser(e) {
+    e.preventDefault();
+
+    const { email, password, rePass } = getFormData(e);
+
+    if (email !== '' && password !== '' && rePass !== '' && rePass === password) {
+        try {
+            const response = await fetch('http://localhost:3030/users/register', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password, rePass })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                sessionStorage.setItem('email', data.email);
+                sessionStorage.setItem('id', data._id);
+                sessionStorage.setItem('accessToken', data.accessToken);
+
+                render(document.querySelector('#home-view'));
+
+            } else {
+                throw new Error(data.message);
+            }
+        } catch (err) {
+            console.error(err.message);
+        }
+
+    }
+}
+
+function getFormData(e) {
+    const formData = new FormData(e.target);
+
+    return Object.fromEntries(formData.entries());
 }
