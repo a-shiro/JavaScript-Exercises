@@ -18,7 +18,6 @@ export async function loginUser(e) {
             const data = await response.json();
 
             if (response.ok) {
-                sessionStorage.setItem('username', data.username);
                 sessionStorage.setItem('email', data.email);
                 sessionStorage.setItem('id', data._id);
                 sessionStorage.setItem('accessToken', data.accessToken);
@@ -69,8 +68,25 @@ export async function registerUser(e) {
     }
 }
 
+export async function logoutUser() {
+    const response = await fetch('http://localhost:3030/users/logout', {
+        method: 'get',
+        headers: {
+            'X-Authorization': sessionStorage.accessToken
+        }
+    });
+
+    if (response.ok) {
+        sessionStorage.clear();
+
+        render(document.querySelector('#home-view'));
+    }
+}
+
+
 function getFormData(e) {
     const formData = new FormData(e.target);
 
     return Object.fromEntries(formData.entries());
 }
+
