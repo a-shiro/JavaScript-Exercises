@@ -1,7 +1,7 @@
-import { displayView } from "./utils.js";
+import { render } from "../utils.js";
 
 const section = document.querySelector('#register-view');
 
 export function showRegisterView() {
-    displayView(section);
+    render(section);
 }

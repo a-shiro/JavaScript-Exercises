@@ -1,6 +1,6 @@
 const sections = document.querySelectorAll('section');
 
-export function displayView(section) {
+export function render(section) {
     sections.forEach(x => {
         x.style.display = 'block'
             ? x.style.display = 'none'
