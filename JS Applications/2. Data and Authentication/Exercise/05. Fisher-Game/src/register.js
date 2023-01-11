@@ -1,1 +1,7 @@
-console.log('TODO:// Implement Register functionality');
+import { displayView } from "./utils.js";
+
+const section = document.querySelector('#register-view');
+
+export function showRegisterView() {
+    displayView(section);
+}
