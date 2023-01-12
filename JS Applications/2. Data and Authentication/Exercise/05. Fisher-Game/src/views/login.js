@@ -1,7 +1,8 @@
-import { render } from "../utils.js";
+import { hideSections } from "../utils.js";
 
 const section = document.querySelector('#login-view');
 
 export function showLoginView() {
-    render(section);
+    hideSections();
+    section.style.display = 'block';
 }

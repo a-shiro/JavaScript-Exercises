@@ -1,11 +1,11 @@
 const sections = document.querySelectorAll('section');
 
-export function render(section) {
+export function hideSections() {
     sections.forEach(x => {
-        x.style.display = 'block'
-            ? x.style.display = 'none'
-            : '';
+        x.style.display = 'none';
     });
+}
 
-    section.style.display = 'block';
+export function render(view) {
+    view();
 }

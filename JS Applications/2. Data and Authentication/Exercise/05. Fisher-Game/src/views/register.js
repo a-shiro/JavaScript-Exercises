@@ -1,7 +1,8 @@
-import { render } from "../utils.js";
+import { hideSections } from "../utils.js";
 
 const section = document.querySelector('#register-view');
 
 export function showRegisterView() {
-    render(section);
+    hideSections();
+    section.style.display = 'block';
 }

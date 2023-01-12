@@ -1,4 +1,5 @@
 import { render } from "../utils.js";
+import { showHomeView } from "../views/home.js";
 
 export async function loginUser(e) {
     e.preventDefault();
@@ -22,7 +23,7 @@ export async function loginUser(e) {
                 sessionStorage.setItem('id', data._id);
                 sessionStorage.setItem('accessToken', data.accessToken);
 
-                render(document.querySelector('#home-view'));
+                render(showHomeView);
 
             } else {
                 throw new Error(data.message);
@@ -56,7 +57,7 @@ export async function registerUser(e) {
                 sessionStorage.setItem('id', data._id);
                 sessionStorage.setItem('accessToken', data.accessToken);
 
-                render(document.querySelector('#home-view'));
+                render(showHomeView);
 
             } else {
                 throw new Error(data.message);
@@ -79,7 +80,7 @@ export async function logoutUser() {
     if (response.ok) {
         sessionStorage.clear();
 
-        render(document.querySelector('#home-view'));
+        render(showHomeView);
     }
 }
 
