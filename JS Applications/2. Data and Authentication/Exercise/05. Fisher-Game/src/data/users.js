@@ -1,5 +1,6 @@
 import { render } from "../utils.js";
 import { showHomeView } from "../views/home.js";
+import { getFormData } from "../utils.js";
 
 export async function loginUser(e) {
     e.preventDefault();
@@ -22,7 +23,7 @@ export async function loginUser(e) {
                 sessionStorage.setItem('email', data.email);
                 sessionStorage.setItem('id', data._id);
                 sessionStorage.setItem('accessToken', data.accessToken);
-
+                
                 render(showHomeView);
 
             } else {
@@ -85,9 +86,4 @@ export async function logoutUser() {
 }
 
 
-function getFormData(e) {
-    const formData = new FormData(e.target);
-
-    return Object.fromEntries(formData.entries());
-}
 

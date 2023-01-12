@@ -1,3 +1,5 @@
+import { getFormData } from "../utils.js";
+
 const catchesDiv = document.querySelector('#catches');
 
 export async function loadCatches() {
@@ -57,11 +59,46 @@ export async function loadCatches() {
             });
 
             catchesDiv.append(fragment);
-        } else { 
+        } else {
             throw new Error(data.message);
         }
 
     } catch (err) {
         console.error(err.message);
+    }
+}
+
+export async function addCatch(e) {
+    e.preventDefault();
+
+    const { angler, weight, species, location, bait, captureTime } = getFormData(e);
+
+    if (angler !== '', weight !== '', species !== '', location !== '', bait !== '', captureTime !== '') {
+        try {
+            const response = await fetch('http://localhost:3030/data/catches', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Authorization': sessionStorage.accessToken
+                },
+                body: JSON.stringify({
+                    angler,
+                    weight,
+                    species,
+                    location,
+                    bait,
+                    captureTime
+                })
+            })
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+        } catch (err) {
+            console.error(err.message);
+        }
     }
 }
