@@ -10,6 +10,11 @@ export function hideSections() {
     });
 }
 
+export function swapActiveBtn(button) {
+    document.querySelector('.active').classList.remove('active');
+    button.classList.add('active');
+}
+
 export function render(view) {
     view();
 
