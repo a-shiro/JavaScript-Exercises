@@ -108,8 +108,41 @@ export async function addCatch(e) {
 }
 
 async function updateCatch(e) {
-    console.log(e.target);
+    const id = e.target.getAttribute('data-id');
+    const [angler, weight, species, location, bait, captureTime] = e.target.parentElement.querySelectorAll('input');
+    
+    const body = {
+        angler: angler.value,
+        weight: weight.value,
+        species: species.value,
+        location: location.value,
+        bait: bait.value,
+        captureTime: captureTime.value,
+    };
 
+    if (angler.value !== '', weight.value !== '', species.value !== '', location.value !== '', bait.value !== '', captureTime.value !== '') {
+        try {
+            const response = await fetch('http://localhost:3030/data/catches/' + id, {
+                method: 'put',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Authorization': sessionStorage.accessToken
+                },
+                body: JSON.stringify(body)
+            })
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message);
+            }
+
+        } catch (err) {
+            console.error(err.message);
+        }
+    }
+
+    render(showHomeView);
 }
 
 async function deleteCatch(e) {
