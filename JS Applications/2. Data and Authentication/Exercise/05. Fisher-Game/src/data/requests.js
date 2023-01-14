@@ -1,4 +1,5 @@
-import { getFormData } from "../utils.js";
+import { getFormData, render } from "../utils.js";
+import { showHomeView } from "../views/home.js";
 
 const catchesDiv = document.querySelector('#catches');
 
@@ -37,15 +38,11 @@ export async function loadCatches() {
                 updateBtn.classList.add('update');
                 deleteBtn.classList.add('delete');
 
-                updateBtn.setAttribute('data-id', element._ownerId);
-                deleteBtn.setAttribute('data-id', element._ownerId);
+                updateBtn.setAttribute('data-id', element._id);
+                deleteBtn.setAttribute('data-id', element._id);
 
-                updateBtn.addEventListener('click', () => {
-                    console.log('update');
-                })
-                deleteBtn.addEventListener('click', () => {
-                    console.log('delete');
-                })
+                updateBtn.addEventListener('click', updateCatch);
+                deleteBtn.addEventListener('click', deleteCatch);
 
                 if (element._ownerId !== sessionStorage.id) {
                     updateBtn.disabled = true;
@@ -66,6 +63,13 @@ export async function loadCatches() {
     } catch (err) {
         console.error(err.message);
     }
+}
+
+async function getCatchById(id) {
+    const response = await fetch('http://localhost:3030/data/catches/' + id);
+    const data = await response.json();
+
+    console.log(data);
 }
 
 export async function addCatch(e) {
@@ -101,4 +105,22 @@ export async function addCatch(e) {
             console.error(err.message);
         }
     }
+}
+
+async function updateCatch(e) {
+    console.log(e.target);
+
+}
+
+async function deleteCatch(e) {
+    const id = e.target.getAttribute('data-id');
+
+    await fetch('http://localhost:3030/data/catches/' + id, {
+        method: 'delete',
+        headers: {
+            'X-Authorization': sessionStorage.accessToken
+        }
+    });
+
+    render(showHomeView);
 }
